@@ -1,0 +1,43 @@
+﻿@model List<Entidades.Premios>
+@{
+    ViewBag.Title = "ListaPremios";
+}
+<center>
+    <h1><i><b>Lista de premios</b></i></h1>
+    @{
+        var Mensaje = "";
+
+        if (TempData["Mensaje"] != null)
+        {
+            Mensaje = TempData["Mensaje"].ToString();
+        }
+
+        if (Mensaje == "Alta")
+        {
+            <center><h2 class="p-3 mb-2 bg-success"><i>Se ha guardado un nuevo premio de un competidor</i></h2></center>
+        }
+    }
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Año</th>
+                <th scope="col">Cantidad premios</th>
+                <th scope="col">Nombre competidor</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="col" class="text-danger">@item.Anio</th>
+                    <th scope="col" class="text-danger">@item.CantidadPremios</th>
+                    <th scope="col" class="text-danger">@item.Competidores.Nombre</th>
+                    <br />
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @Html.ActionLink("Crear Nuevo Premio", "AltaPremios", "Premios", null, new { @class = "btn btn-primary" })
+</center>

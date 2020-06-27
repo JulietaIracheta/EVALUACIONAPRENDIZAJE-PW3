@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Css Main-->
+    <link href="~/Content/Css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Css/main.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container">
+        @Html.Partial("VPHeader")
+        @RenderBody()
+    </div>
+</body>
+
+@Html.Partial("VPFooter")
+
+</html>

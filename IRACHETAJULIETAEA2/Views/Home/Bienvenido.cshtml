@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Bienvenido";
+    Layout = "~/Views/Shared/_BaseLayout.cshtml";
+}
+<div>
+    <center>
+        <h1><i>Bienvenido a la evaluación de aprendizaje Nro 2</i></h1><br>
+
+        @Html.ActionLink("Ir a Gestión de Competidores", "ListaCompetidores", "Competidores", null, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Ir a Gestión de Premios", "ListaPremios", "Premios", null, new { @class = "btn btn-primary" })
+    </center>
+</div>

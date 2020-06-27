@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EA2IRACHETAJULIETAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Competidores">
+    <Key>
+      <PropertyRef Name="IdCompetidor" />
+    </Key>
+    <Property Name="IdCompetidor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Premios">
+    <Key>
+      <PropertyRef Name="IdPremio" />
+    </Key>
+    <Property Name="IdPremio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdCompetidor" Type="int" Nullable="false" />
+    <Property Name="CantidadPremios" Type="int" Nullable="false" />
+    <Property Name="Anio" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Competidores_Premios">
+    <End Role="Competidores" Type="Self.Competidores" Multiplicity="1" />
+    <End Role="Premios" Type="Self.Premios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Competidores">
+        <PropertyRef Name="IdCompetidor" />
+      </Principal>
+      <Dependent Role="Premios">
+        <PropertyRef Name="IdCompetidor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EA2IRACHETAJULIETAModelStoreContainer">
+    <EntitySet Name="Competidores" EntityType="Self.Competidores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Premios" EntityType="Self.Premios" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Competidores_Premios" Association="Self.FK_Competidores_Premios">
+      <End Role="Competidores" EntitySet="Competidores" />
+      <End Role="Premios" EntitySet="Premios" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

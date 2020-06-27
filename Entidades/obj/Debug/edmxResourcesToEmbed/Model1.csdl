@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EA2IRACHETAJULIETAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Competidores">
+    <Key>
+      <PropertyRef Name="IdCompetidor" />
+    </Key>
+    <Property Name="IdCompetidor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Premios" Relationship="Self.FK_Competidores_Premios" FromRole="Competidores" ToRole="Premios" />
+  </EntityType>
+  <EntityType Name="Premios">
+    <Key>
+      <PropertyRef Name="IdPremio" />
+    </Key>
+    <Property Name="IdPremio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdCompetidor" Type="Int32" Nullable="false" />
+    <Property Name="CantidadPremios" Type="Int32" Nullable="false" />
+    <Property Name="Anio" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Competidores" Relationship="Self.FK_Competidores_Premios" FromRole="Premios" ToRole="Competidores" />
+  </EntityType>
+  <Association Name="FK_Competidores_Premios">
+    <End Role="Competidores" Type="Self.Competidores" Multiplicity="1" />
+    <End Role="Premios" Type="Self.Premios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Competidores">
+        <PropertyRef Name="IdCompetidor" />
+      </Principal>
+      <Dependent Role="Premios">
+        <PropertyRef Name="IdCompetidor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EA2IRACHETAJULIETAEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Competidores" EntityType="Self.Competidores" />
+    <EntitySet Name="Premios" EntityType="Self.Premios" />
+    <AssociationSet Name="FK_Competidores_Premios" Association="Self.FK_Competidores_Premios">
+      <End Role="Competidores" EntitySet="Competidores" />
+      <End Role="Premios" EntitySet="Premios" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

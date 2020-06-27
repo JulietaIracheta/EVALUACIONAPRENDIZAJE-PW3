@@ -1,0 +1,38 @@
+﻿@model Entidades.Views.VMPremios
+@{
+    ViewBag.Title = "AltaPremios";
+}
+
+<center><h2><i><b>Alta premios</b></i></h2></center>
+<br />
+
+@using (Html.BeginForm("AltaPremios", "Premios", FormMethod.Post, new { @class = "login100-form validate-form p-b-33 p-t-5" }))
+{
+    <center>
+        <i><b>Competidores</b></i><br />
+        <select name="IdCompetidor" class="form-control">
+            @foreach (var item in Model.Competidores)
+            {
+                <option value="@item.IdCompetidor">@item.Nombre</option>
+            }
+
+        </select><br />
+        <input type="hidden" name="IdCompetidor" />
+
+        @Html.ValidationMessageFor(model => model.Competidores)
+
+        <i><b>Año</b></i><br />
+        <div class="wrap-input100 validate-input">
+            @Html.TextBoxFor(model => model.Anio)<br />
+            @Html.ValidationMessageFor(model => model.Anio)
+        </div><br />
+
+        <i><b>Cantidad de premios</b></i><br />
+        <div class="wrap-input100 validate-input">
+            @Html.TextBoxFor(model => model.CantidadPremios)<br />
+            @Html.ValidationMessageFor(model => model.CantidadPremios)
+        </div><br />
+
+        <button type="submit" class="btn btn-primary">Dar de alta</button>
+    </center>
+}

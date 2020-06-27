@@ -1,0 +1,44 @@
+﻿@model List<Entidades.Competidores>
+@{
+    ViewBag.Title = "Lista de competidores";
+}
+
+<center><h2><i>Lista de competidores</i></h2></center>
+<br>
+@{
+
+    var Mensaje = "";
+
+    if (TempData["Mensaje"] != null)
+    {
+        Mensaje = TempData["Mensaje"].ToString();
+    }
+
+    if (Mensaje == "Se ha dado de alta")
+    {
+        <center><h2 class="p-3 mb-2 bg-success"><i>Se ha dado de alta el nuevo competidor</i></h2></center>
+    }
+    <br>
+    <br>
+}
+
+<center>
+    <table class="table">
+        <thead>
+
+            <tr>
+                <th scope="col"><center>COMPETIDORES</center></th>
+            </tr>
+        </thead>
+        <th scope="col" class="text-danger">
+            @foreach (var item in Model)
+            {
+                <center>
+                    @item.Nombre <br />
+                </center>
+            }
+        </th>
+    </table>
+
+    @Html.ActionLink("Crear Nuevo Competidor", "AltaCompetidor", "Competidores", null, new { @class = "btn btn-primary" })
+</center>

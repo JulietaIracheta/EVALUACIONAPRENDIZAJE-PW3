@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EA2IRACHETAJULIETAModelStoreContainer" CdmEntityContainer="EA2IRACHETAJULIETAEntities">
+    <EntitySetMapping Name="Competidores">
+      <EntityTypeMapping TypeName="EA2IRACHETAJULIETAModel.Competidores">
+        <MappingFragment StoreEntitySet="Competidores">
+          <ScalarProperty Name="IdCompetidor" ColumnName="IdCompetidor" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Premios">
+      <EntityTypeMapping TypeName="EA2IRACHETAJULIETAModel.Premios">
+        <MappingFragment StoreEntitySet="Premios">
+          <ScalarProperty Name="IdPremio" ColumnName="IdPremio" />
+          <ScalarProperty Name="IdCompetidor" ColumnName="IdCompetidor" />
+          <ScalarProperty Name="CantidadPremios" ColumnName="CantidadPremios" />
+          <ScalarProperty Name="Anio" ColumnName="Anio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
